@@ -6,7 +6,7 @@ export function ScrollToHash() {
 
   useEffect(() => {
     if (!hash) {
-      if (pathname === '/') window.scrollTo({ top: 0 })
+      window.scrollTo({ top: 0 })
       return
     }
     const id = hash.replace('#', '')

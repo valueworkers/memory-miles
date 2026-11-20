@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { Legal } from './pages/Legal'
+import { PortfolioGallery } from './pages/PortfolioGallery'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="legal/:slug" element={<Legal />} />
+          <Route path="portfolio/:category" element={<PortfolioGallery />} />
           <Route path="services" element={<Navigate to="/#services" replace />} />
           <Route path="taxi" element={<Navigate to="/#taxi" replace />} />
           <Route path="events" element={<Navigate to="/#events" replace />} />

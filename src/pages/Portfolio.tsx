@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { FadeUp } from '../components/Motion'
 import { PortfolioStage } from '../components/PortfolioStage'
-
-const DECOR_PORTFOLIO = 'https://decor-omega-six.vercel.app/'
+import { PORTFOLIO_CATEGORIES } from '../lib/portfolio'
 
 export function Portfolio() {
   return (
@@ -16,24 +15,17 @@ export function Portfolio() {
               Décor photos from marriages, birthdays, sangeet nights and naming ceremonies — stages,
               entrances and spaces styled for the day.
             </p>
-            <div className="hero-types" aria-label="Portfolio event types" style={{ marginTop: 6 }}>
-              <span>Marriage</span>
-              <span>Birthday</span>
-              <span>Sangeet</span>
-              <span>Naming ceremony</span>
-            </div>
-            <motion.a
-              className="btn btn-wine"
-              href={DECOR_PORTFOLIO}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ marginTop: 22, alignSelf: 'flex-start' }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-            >
-              View décor portfolio
-            </motion.a>
+            <nav className="portfolio-categories" aria-label="Browse portfolio by event">
+              {PORTFOLIO_CATEGORIES.map((category) => (
+                <Link
+                  className="portfolio-category"
+                  key={category.slug}
+                  to={`/portfolio/${category.slug}`}
+                >
+                  {category.label}
+                </Link>
+              ))}
+            </nav>
           </div>
           <PortfolioStage />
         </FadeUp>
